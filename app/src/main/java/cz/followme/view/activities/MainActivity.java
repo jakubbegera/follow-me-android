@@ -52,9 +52,6 @@ public class MainActivity extends AppCompatActivity implements MainActivityView 
                     stopService(new Intent(MainActivity.this, LocationService.class));
                 } else {
                     presenter.sendCreateSessionRequest();
-//                    isLocationServiceRunning = true;
-//                    btnStartStop.setText("Stop");
-//                    startService(new Intent(MainActivity.this, LocationService.class));
                 }
 
             }
@@ -90,7 +87,10 @@ public class MainActivity extends AppCompatActivity implements MainActivityView 
 
     @Override
     public void onSessionCreated(String sessionId) {
-
+        isLocationServiceRunning = true;
+        btnStartStop.setText("Stop");
+        startService(new Intent(MainActivity.this, LocationService.class)
+                .putExtra(LocationService.EXTRA_SESSION_ID, sessionId));
     }
 
     @Override

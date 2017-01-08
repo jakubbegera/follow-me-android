@@ -14,7 +14,15 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.widget.Toast;
 
+import javax.inject.Inject;
+
 import cz.followme.App;
+import cz.followme.data.model.requests.PostLocationRequest;
+import cz.followme.data.model.responces.EmptyResponse;
+import cz.followme.data.repository.network.NetworkDataRepository;
+import cz.followme.usecases.impl.PostLocationUsecase;
+import rx.Observer;
+import rx.Subscription;
 import timber.log.Timber;
 
 /**
@@ -22,11 +30,19 @@ import timber.log.Timber;
  */
 public class LocationService extends Service implements LocationListener {
 
+    public final static String EXTRA_SESSION_ID = "extra_session_id";
+
     public LocationManager locationManager;
+
+    @Inject
+    protected NetworkDataRepository dataRepository;
+    private String sessionID;
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         ((App) getApplication()).getAppComponent().inject(this);
+
+        sessionID = intent.getStringExtra(EXTRA_SESSION_ID);
 
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
@@ -59,6 +75,31 @@ public class LocationService extends Service implements LocationListener {
     public void onLocationChanged(Location location) {
         Timber.i("New location - %s", location.toString());
         Toast.makeText(this, location.toString(), Toast.LENGTH_SHORT).show();
+
+        final PostLocationRequest request = new PostLocationRequest(
+                sessionID,
+                location.getLatitude(),
+                location.getLongitude(),
+                location.getAltitude()
+        );
+
+        Subscription subscription = new PostLocationUsecase(dataRepository, request)
+                .execute(new Observer<EmptyResponse>() {
+                    @Override
+                    public void onCompleted() {
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Timber.e(e, "Posting location failed. Loc - %s.", request.toString());
+                    }
+
+                    @Override
+                    public void onNext(EmptyResponse emptyResponse) {
+                        Timber.i("Location posted. Loc - %s.", request.toString());
+                    }
+                });
     }
 
     @Override

@@ -18,6 +18,13 @@ public class PostLocationRequest {
     @Expose
     private double altitude;
 
+    public PostLocationRequest(String sessionId, double latitude, double longitude, double altitude) {
+        this.sessionId = sessionId;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.altitude = altitude;
+    }
+
     public String getSessionId() {
         return sessionId;
     }

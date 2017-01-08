@@ -1,6 +1,8 @@
 package cz.followme.data.repository.network;
 
+import cz.followme.data.model.requests.PostLocationRequest;
 import cz.followme.data.model.responces.CreateSessionResponse;
+import cz.followme.data.model.responces.EmptyResponse;
 import cz.followme.data.repository.DataRepository;
 import rx.Observable;
 
@@ -20,5 +22,10 @@ public class NetworkDataRepository implements DataRepository {
     @Override
     public Observable<CreateSessionResponse> createSessionObservable() {
         return endpoints.createSession();
+    }
+
+    @Override
+    public Observable<EmptyResponse> createPostLocationObservable(PostLocationRequest requestData) {
+        return endpoints.postLocation(requestData);
     }
 }

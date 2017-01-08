@@ -1,7 +1,11 @@
 package cz.followme.data.repository.network;
 
+import cz.followme.data.model.requests.PostLocationRequest;
 import cz.followme.data.model.responces.CreateSessionResponse;
+import cz.followme.data.model.responces.EmptyResponse;
+import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 import rx.Observable;
 
 /**
@@ -13,4 +17,8 @@ public interface Endpoints {
 
     @GET("create-session")
     Observable<CreateSessionResponse> createSession();
+
+    @POST("post-location")
+    Observable<EmptyResponse> postLocation(@Body PostLocationRequest requestData);
+
 }
