@@ -22,7 +22,7 @@ public class App extends Application {
 
         appComponent = DaggerAppComponent.builder()
                 .appModule(new AppModule(this))
-                .networkModule(new NetworkModule("http://followmecz.herokuapp.com/api/v1"))
+                .networkModule(new NetworkModule("http://followmecz.herokuapp.com/api/v1/"))
                 .build();
     }
 

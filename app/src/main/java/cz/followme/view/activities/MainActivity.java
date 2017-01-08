@@ -8,15 +8,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import javax.inject.Inject;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import cz.followme.App;
 import cz.followme.R;
-import cz.followme.data.repozitory.DataRepository;
-import cz.followme.data.repozitory.network.NetworkDataRepository;
-import cz.followme.injection.NetworkModule;
 import cz.followme.presenters.MainActivityPresenter;
 import cz.followme.services.LocationService;
 import cz.followme.view.MainActivityView;

@@ -1,7 +1,7 @@
 package cz.followme.usecases.impl;
 
 import cz.followme.data.model.responces.CreateSessionResponse;
-import cz.followme.data.repozitory.DataRepository;
+import cz.followme.data.repository.DataRepository;
 import cz.followme.usecases.Usecase;
 import rx.Observer;
 import rx.Subscription;

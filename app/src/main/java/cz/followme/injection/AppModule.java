@@ -4,8 +4,6 @@ import android.app.Application;
 
 import javax.inject.Singleton;
 
-import cz.followme.data.repozitory.DataRepository;
-import cz.followme.presenters.MainActivityPresenter;
 import dagger.Module;
 import dagger.Provides;
 

@@ -1,4 +1,4 @@
-package cz.followme.data.repozitory.network;
+package cz.followme.data.repository.network;
 
 import cz.followme.data.model.responces.CreateSessionResponse;
 import retrofit2.http.GET;

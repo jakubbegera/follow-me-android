@@ -1,7 +1,7 @@
-package cz.followme.data.repozitory.network;
+package cz.followme.data.repository.network;
 
 import cz.followme.data.model.responces.CreateSessionResponse;
-import cz.followme.data.repozitory.DataRepository;
+import cz.followme.data.repository.DataRepository;
 import rx.Observable;
 
 /**

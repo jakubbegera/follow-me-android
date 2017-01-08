@@ -6,8 +6,7 @@ import javax.inject.Inject;
 
 import cz.followme.App;
 import cz.followme.data.model.responces.CreateSessionResponse;
-import cz.followme.data.repozitory.DataRepository;
-import cz.followme.data.repozitory.network.NetworkDataRepository;
+import cz.followme.data.repository.network.NetworkDataRepository;
 import cz.followme.usecases.impl.SendCreateSessionUsecase;
 import cz.followme.view.MainActivityView;
 import rx.Observer;

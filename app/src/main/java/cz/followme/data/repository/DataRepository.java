@@ -1,4 +1,4 @@
-package cz.followme.data.repozitory;
+package cz.followme.data.repository;
 
 
 import cz.followme.data.model.responces.CreateSessionResponse;
