@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">FollowMe</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="crating_session_waiting_dialog">Creating FollowMe session, please wait…</string>
+    <string name="session_creation_fail">Oops.. Session creating fail - please check you internet connection and try it again :-)</string>
+    <string name="link_copied">Link has been copied into clipboard</string>
 </resources>

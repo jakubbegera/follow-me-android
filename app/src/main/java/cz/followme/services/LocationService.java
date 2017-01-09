@@ -21,6 +21,7 @@ import cz.followme.data.model.requests.PostLocationRequest;
 import cz.followme.data.model.responces.EmptyResponse;
 import cz.followme.data.repository.network.NetworkDataRepository;
 import cz.followme.usecases.impl.PostLocationUsecase;
+import cz.followme.utils.Preferences;
 import rx.Observer;
 import rx.Subscription;
 import timber.log.Timber;
@@ -36,13 +37,24 @@ public class LocationService extends Service implements LocationListener {
 
     @Inject
     protected NetworkDataRepository dataRepository;
+    @Inject
+    protected Preferences preferences;
     private String sessionID;
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         ((App) getApplication()).getAppComponent().inject(this);
 
-        sessionID = intent.getStringExtra(EXTRA_SESSION_ID);
+        if (intent != null) {
+            sessionID = intent.getStringExtra(EXTRA_SESSION_ID);
+        } else {
+            sessionID = preferences.getSessionID();
+        }
+
+        if (sessionID == null) {
+            Timber.e("null sessionID");
+            return super.onStartCommand(intent, flags, startId);
+        }
 
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
@@ -74,7 +86,7 @@ public class LocationService extends Service implements LocationListener {
     @Override
     public void onLocationChanged(Location location) {
         Timber.i("New location - %s", location.toString());
-        Toast.makeText(this, location.toString(), Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, location.toString(), Toast.LENGTH_SHORT).show();
 
         final PostLocationRequest request = new PostLocationRequest(
                 sessionID,
