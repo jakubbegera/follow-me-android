@@ -2,10 +2,12 @@ package cz.followme;
 
 import android.app.Application;
 
+import com.crashlytics.android.Crashlytics;
 import cz.followme.injection.AppComponent;
 import cz.followme.injection.AppModule;
 import cz.followme.injection.DaggerAppComponent;
 import cz.followme.injection.NetworkModule;
+import io.fabric.sdk.android.Fabric;
 import timber.log.Timber;
 
 /**
@@ -18,6 +20,7 @@ public class App extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        Fabric.with(this, new Crashlytics());
         initLoggers();
 
         appComponent = DaggerAppComponent.builder()
