@@ -7,7 +7,7 @@ buildscript {
 
     dependencies {
         classpath 'me.tatarka:gradle-retrolambda:3.2.4'
-        classpath 'io.fabric.tools:gradle:1.+'
+        classpath 'io.fabric.tools:gradle:1.22.0'
     }
 }
 
@@ -34,6 +34,14 @@ def getDate() {
 def gitSha = 'git rev-parse --short HEAD'.execute([], project.rootDir).text.trim()
 
 android {
+    signingConfigs {
+        config {
+            keyAlias 'flm'
+            keyPassword 'flm2017.?;'
+            storeFile file('/Users/Jakub/Dropbox/Programming/Android Key Store/FollowMe/followme.jks')
+            storePassword 'flm2017.?;'
+        }
+    }
     compileSdkVersion 25
     buildToolsVersion "25.0.0"
     defaultConfig {
@@ -52,34 +60,30 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-
     productFlavors {
         dev {
             applicationIdSuffix '.dev'
         }
         production {
-
+            signingConfig signingConfigs.config
         }
     }
-
     dexOptions {
         javaMaxHeapSize "8g"
     }
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     compile 'com.android.support:appcompat-v7:25.1.0'
     testCompile 'junit:junit:4.12'
-
     //dagger
     annotationProcessor 'com.google.dagger:dagger-compiler:2.8'
     compile 'com.google.dagger:dagger:2.8'
     provided 'javax.annotation:jsr250-api:1.0'
-
     provided 'org.glassfish:javax.annotation:10.0-b28'
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'com.google.code.gson:gson:2.6.2'
