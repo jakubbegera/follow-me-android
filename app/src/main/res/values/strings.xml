@@ -4,4 +4,7 @@
     <string name="crating_session_waiting_dialog">Creating FollowMe session, please wait…</string>
     <string name="session_creation_fail">Oops.. Session creating fail - please check you internet connection and try it again :-)</string>
     <string name="link_copied">Link has been copied into clipboard</string>
+    <string name="stop">Stop</string>
+    <string name="followme_session_is_running">FollowMe session is running!</string>
+    <string name="start">Start</string>
 </resources>

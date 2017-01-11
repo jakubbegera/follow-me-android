@@ -17,7 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_margin="@dimen/activity_vertical_margin"
+        android:layout_margin="25dp"
         android:orientation="vertical"
         tools:paddingBottom="100dp">
 
@@ -26,7 +26,7 @@
             android:id="@+id/btn_start"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Start"
+            android:text="@string/start"
             android:textColor="@android:color/white"
             android:background="@color/start"
             tools:visibility="gone"/>
@@ -42,11 +42,11 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="FollowMe session is running!"
+                android:text="@string/followme_session_is_running"
                 android:layout_marginTop="10dp"
                 android:textAlignment="center"
                 android:textColor="@color/text_grey"
-                android:textSize="18dp"
+                android:textSize="25sp"
                 android:textStyle="bold"/>
 
             <TextView
@@ -57,7 +57,7 @@
                 android:textColor="@color/text_grey"
                 android:layout_marginTop="6dp"
                 android:textAlignment="center"
-                android:textSize="14dp"
+                android:textSize="17sp"
                 android:textStyle="normal"/>
 
             <LinearLayout
@@ -74,6 +74,7 @@
                     android:scaleType="fitCenter"
                     android:adjustViewBounds="true"
                     android:padding="8dp"
+                    android:layout_marginRight="5dp"
                     android:background="@android:color/transparent"/>
 
                 <ImageButton
@@ -93,7 +94,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
-                android:text="Stop"
+                android:text="@string/stop"
                 android:textColor="@android:color/white"
                 android:background="@color/stop"/>
 
