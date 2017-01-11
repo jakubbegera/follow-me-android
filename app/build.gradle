@@ -52,7 +52,7 @@ android {
         versionCode versionMajor * 10000 + versionMinor * 1000 + versionPatch * 100 + versionBuild
         versionName "${versionMajor}.${versionMinor}.${versionPatch}"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-        buildConfigField "String", "SERVER_ENVIRONMENT", "\"https://followmecz.herokuapp.com\""
+        buildConfigField "String", "SERVER_ENVIRONMENT", "\"http://www.flwme.cz\""
     }
     buildTypes {
         release {
